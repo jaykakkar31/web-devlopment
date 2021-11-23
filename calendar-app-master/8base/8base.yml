@@ -1,0 +1,6 @@
+functions:
+  triggerSchedule:
+    handler:
+      code: src/triggerSchedule.js
+    type: trigger.after
+    operation: Events.create

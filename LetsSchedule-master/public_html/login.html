@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In:TodoList</title>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="pace/pace.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <link rel="stylesheet" href="pace/pace.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <style>
+        .formrow:nth-child(3){
+            border-bottom: none;
+        }
+        #googleNotRegister{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="logo"></div>
+<div class="errors">
+    <div role="alert" class="message" id="incorrectEmail">
+        The email or password you entered was incorrect. Please try again.
+    </div>
+    <div role="alert" class="message" id="enterPassword">
+        Please enter a password.
+    </div>
+    <div role="alert" class="message" id="googleNotRegister">
+        This Google account is not Registered with Todolist. Signup First.
+    </div>
+</div>
+<div id="formWrapper">
+    <form>
+        <div class="formrow">
+            <i class="fa fa-envelope-o" aria-hidden="true" style="color: #328ad6;"></i>
+            <input id="email" type="email" name="email" required autofocus
+                   pattern="^[^\s@＠=]+[@|＠][^\.\s@＠]+(\.[^\.\s@＠]+)+$"
+                   title="Please enter a valid email address." placeholder="Email"/>
+        </div>
+
+        <div class="formrow">
+            <i class="fa fa-key" aria-hidden="true" style="color: #328ad6;"></i>
+            <input id="password" type="password" name="password" required
+                   placeholder="Password"/>
+        </div>
+
+        <div class="formrow">
+            <button id="login" type="submit">Sign In</button>
+        </div>
+    </form>
+    <div class="separator">
+        <h2>OR</h2>
+    </div>
+
+    <button type="button" id="googleLogin" class="google">
+        <i class="fa fa-google" aria-hidden="true"></i>
+        <div>Log In With Google Account</div>
+    </button>
+
+    <div id="createAccount" class="loginSignupNavigation">
+        Don't have an account?
+        <a href="/signup">Create Account</a>
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        ////already logged in
+        var clientId = localStorage.getItem('todolistClient');
+        if(clientId != '')
+        {
+            $.post('/login/checkclientid', {clientId: clientId}, function (data, status) {
+                if(data.status == 'exists')
+                    window.location.href = '/todos';
+            });
+        }
+
+        gapi.load('auth2', function(){
+            // Retrieve the singleton for the GoogleAuth library and set up the client.
+            var auth2 = gapi.auth2.init({
+                client_id: '95650438097-qfor02273p9n9cn9h1sbc4cei98tvcmc.apps.googleusercontent.com',
+                cookiepolicy: 'single_host_origin'
+            });
+
+            //attach sign in
+            auth2.attachClickHandler('googleLogin', {},
+                function(googleUser) {
+                    $.post('/login', {email: googleUser.getBasicProfile().getEmail()}, function (data, status) {
+                        if (data.status == 'invalid') {
+                            $('#enterPassword').hide();
+                            $('#incorrectEmail').hide();
+                            $('#googleNotRegister').show();
+                            auth2.signOut();
+                        }
+                        else {
+                            localStorage.setItem('todolistClient', data.clientId);
+                            window.location.href = '/todos';
+                        }
+                    });
+                }, function(error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                }
+            );
+        });
+
+        $('form').submit(function () {
+            if($('#password').val() == ''){
+                $('#incorrectEmail').hide();
+                $('#googleNotRegister').hide();
+                $('#enterPassword').show();
+            }
+            else {
+                var clientData = {
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                };
+                $.post('/login', clientData, function (data, status) {
+                    if (data.status == 'invalid') {
+                        $('#enterPassword').hide();
+                        $('#googleNotRegister').hide();
+                        $('#incorrectEmail').show();
+                    }
+                    else {
+                        localStorage.setItem('todolistClient', data.clientId);
+                        window.location.href = '/todos';
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

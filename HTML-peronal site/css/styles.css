@@ -1,0 +1,28 @@
+body {
+  background-color: #f6dfeb;
+}
+hr {
+  /* background-color: white; */
+  /* height: 2px; */
+  /* border-style: dotted; */
+  width: 10%;
+  /* border-width: thick; */
+  border-style: none;
+  border-top-style: dotted;
+  border-color: grey;
+  border-width: 10px;
+}
+img {
+  height: 160px;
+  width: 160px;
+  background-color: #93329e;
+}
+h1 {
+  color: #93329e;
+}
+h3 {
+  color: #93329e;
+}
+#skills{
+    color: brown;
+}

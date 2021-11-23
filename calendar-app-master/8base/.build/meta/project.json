@@ -1,0 +1,10 @@
+{
+  "name": "8base",
+  "functions": [
+    {
+      "name": "triggerSchedule",
+      "handler": "triggerSchedule.handler",
+      "pathToFunction": "src/triggerSchedule.js"
+    }
+  ]
+}

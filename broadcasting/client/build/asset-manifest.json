@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "http://broadcastingnew.online/static/css/main.0d479f72.chunk.css",
+    "main.js": "http://broadcastingnew.online/static/js/main.cc8fc7c8.chunk.js",
+    "main.js.map": "http://broadcastingnew.online/static/js/main.cc8fc7c8.chunk.js.map",
+    "runtime-main.js": "http://broadcastingnew.online/static/js/runtime-main.c63ca609.js",
+    "runtime-main.js.map": "http://broadcastingnew.online/static/js/runtime-main.c63ca609.js.map",
+    "static/js/2.0591941b.chunk.js": "http://broadcastingnew.online/static/js/2.0591941b.chunk.js",
+    "static/js/2.0591941b.chunk.js.map": "http://broadcastingnew.online/static/js/2.0591941b.chunk.js.map",
+    "index.html": "http://broadcastingnew.online/index.html",
+    "static/css/main.0d479f72.chunk.css.map": "http://broadcastingnew.online/static/css/main.0d479f72.chunk.css.map",
+    "static/js/2.0591941b.chunk.js.LICENSE.txt": "http://broadcastingnew.online/static/js/2.0591941b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c63ca609.js",
+    "static/js/2.0591941b.chunk.js",
+    "static/css/main.0d479f72.chunk.css",
+    "static/js/main.cc8fc7c8.chunk.js"
+  ]
+}

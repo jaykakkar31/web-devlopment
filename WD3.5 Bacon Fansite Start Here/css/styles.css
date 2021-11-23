@@ -1,0 +1,17 @@
+.broccoli {
+  background-color: aquamarine;
+}
+.bacon {
+  background-color: blue;
+}
+#heading {
+  color: burlywood;
+}
+.circular {
+  border-radius: 100%;
+}
+
+img:hover {
+    /* move  cursor change color */
+  background-color: chartreuse;
+}

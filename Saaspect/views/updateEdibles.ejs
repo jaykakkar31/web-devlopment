@@ -1,0 +1,13 @@
+<%- include ("partials/header") %>
+
+<div>
+  <form action="/updateEdibles" method="POST">
+    <label for="Id">Id</label>
+    <input type="text" class="form-control" name="Id" />
+
+    <label for="quantity">Quantity</label>
+    <input type="text" class="form-control" name="quantity" />
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </form>
+</div>
+<%- include ("partials/footer") %>

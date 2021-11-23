@@ -1,0 +1,23 @@
+<%- include ("partials/header") %> 
+
+<div>
+    <form action="/createEdibles" method="POST">
+           
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name">
+            
+              <label for="type">Type</label>
+              <input type="text" class="form-control" name="type">
+
+               <label for="price">Price</label>
+              <input type="text" class="form-control" name="price">
+
+               <label for="quantity">Quantity</label>
+              <input type="text" class="form-control" name="quantity">
+
+             
+
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </form>
+</div>
+<%- include ("partials/footer") %> 

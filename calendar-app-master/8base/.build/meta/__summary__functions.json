@@ -1,0 +1,19 @@
+{
+  "functions": [
+    {
+      "name": "triggerSchedule",
+      "handler": "triggerSchedule.handler"
+    }
+  ],
+  "resolvers": [],
+  "triggers": [
+    {
+      "name": "triggerSchedule",
+      "operation": "Create",
+      "tableName": "Events",
+      "functionName": "triggerSchedule",
+      "type": "After"
+    }
+  ],
+  "webhooks": []
+}
